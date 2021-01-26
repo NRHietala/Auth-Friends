@@ -15,22 +15,31 @@ function App() {
   const StyledApp = styled.div`
   display:flex;
   flex-flow:column nowrap;
-  align-items:center;
   justify-content:center;
 
+  ul {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+    align-items:center;
+    padding: 15px;
+  }
+
+  li {
+    list-style-type:none;
+    background: skyblue;
+    padding: 3px 5px;
+    border:2px whitesmoke solid;
+  }
   a {
-  text-decoration: none;
   color:black;
+  text-decoration:none;
 }
-  `
+  `;
 
   const logOut = () => {
-    axiosDev()
-    .post('/logout')
-    .then(res => {
-      localStorage.removeItem('token')
-      window.location.href = '/login';
-    })
+    localStorage.removeItem('token')
+    window.location.href = '/login';
   }
 
   return (

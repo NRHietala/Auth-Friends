@@ -20,8 +20,9 @@ const [ friends, setFriends ] = useState([]);
 
   return (
     <div>
+      <h2>Your Current Friends!</h2>
       {friends.map(friend => {
-        return <h1 key={friend.id}>{friend.name}</h1>
+        return <h3 key={friend.id}>{friend.name}</h3>
       })}
     </div>
   )
