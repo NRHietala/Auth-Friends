@@ -1,19 +1,40 @@
 import './App.css';
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Login from './components/Login';
+import axiosDev from './utils/axiosDev';
+import PrivateRoute from '../src/components/PrivateRoute';
+import FriendVault from '../src/components/FriendVault';
 
 
 
 function App() {
 
-  const logOut = () => {
+  const StyledApp = styled.div`
+  display:flex;
+  flex-flow:column nowrap;
+  align-items:center;
+  justify-content:center;
 
+  a {
+  text-decoration: none;
+  color:black;
+}
+  `
+
+  const logOut = () => {
+    axiosDev()
+    .post('/logout')
+    .then(res => {
+      localStorage.removeItem('token')
+      window.location.href = '/login';
+    })
   }
 
   return (
-    <div className="App">
+    <StyledApp className="App">
       <nav>
         <ul>
           <li>
@@ -28,12 +49,11 @@ function App() {
         </ul>
       </nav>
       <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login}/>
+        <PrivateRoute exact path="/protected" component={FriendVault} />
       </Switch>
       
-    </div>
+    </StyledApp>
   );
 }
 
