@@ -32,7 +32,14 @@ const [ formValues, setFormValues ] = useState(initialFormValues);
   }, [])
 
   const postNewFriend = () => {
-
+    axiosDev()
+    .post('/friends', formValues)
+    .then(res => {
+      setFriends({
+        ...friends,
+        formValues
+      })
+    })
   }
 
   const handleChange = e => {
