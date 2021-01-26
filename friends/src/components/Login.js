@@ -34,7 +34,7 @@ const Login = props => {
     <div>
       <h2>Sign In!</h2>
       <form className="formGroup" onSubmit={login}>
-        <label className="formLabel">
+        <label className="formLabel">Username:
         <input
         className="formInput"
         type="text"
@@ -44,7 +44,7 @@ const Login = props => {
         value={formValues.username}
         />
         </label>
-        <label className="formLabel">
+        <label className="formLabel">Password:
         <input
         className="formInput"
         type="password"
